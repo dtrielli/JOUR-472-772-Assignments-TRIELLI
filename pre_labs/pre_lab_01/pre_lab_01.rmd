@@ -146,12 +146,14 @@ Describe what you think each line of this code is doing below, based on the resu
 **Task** Run the following codeblock:
 
 ```{r}
-umd_courses |>
+course_count <- umd_courses |>
   group_by(term) |>
   summarise(
     count_classes = n()
   ) |>
-  arrange(count_classes)
+  arrange(desc(count_classes))
+
+course_count
 ```
 
 Compared to the previous codeblock, what has changed and how did that affect the result? **Answer**
@@ -161,12 +163,13 @@ Compared to the previous codeblock, what has changed and how did that affect the
 **Task** Run the following codeblock.
 
 ```{r}
-umd_courses |>
+course_count_dep <- umd_courses |>
   group_by(term, department) |>
   summarise(
     count_classes = n()
   ) |>
-  arrange(term, department)
+  arrange(desc(count_classes),department)
+
 ```
 
 Compared to the previous codeblock, how did the output change and what in the code changed it?
@@ -220,7 +223,9 @@ umd_courses |>
     mean_seats = mean(seats),
     median_seats = median(seats),
     # add minimum seats here
+    minimum_seats = min(seats),
     # add maximum seats here
+    maximum_seats = max(seats)
   ) |>
   arrange(desc(total_seats))
 ```
@@ -235,7 +240,7 @@ No code here; I want you to provide three questions that this data suggests to y
 
 **Answer**
 
-1.  
+1.  What is the biggest class in the college?
 
 2.  
 
